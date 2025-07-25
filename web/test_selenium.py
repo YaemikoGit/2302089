@@ -17,7 +17,7 @@ def driver():
     driver.quit()
 
 @pytest.mark.parametrize("description,input_text,expected_url_contains,expected_text", [
-    ("valid input", "hello world", "/results", "hello world"),
+    ("valid input", "hello world", "/result", "hello world"),
     ("XSS attack", "<script>alert('XSS')</script>", "/", "Possible XSS attack detected."),
     ("SQL injection", "' OR '1'='1", "/", "Possible SQL Injection detected."),
 ])
