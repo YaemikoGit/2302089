@@ -1,7 +1,8 @@
-from flask import Flask, request, render_template, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, session
+import os
 import re
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder='web/templates')
 
 def is_xss(input_text):
     # Basic blacklist-based detection
@@ -30,3 +31,6 @@ def home():
 def result():
     term = request.args.get('term', '')
     return render_template('result.html', term=term)
+
+if __name__ == "__main__":
+    app.run(host='127.0.0.1', port=5000)

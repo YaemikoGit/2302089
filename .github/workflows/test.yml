@@ -76,13 +76,10 @@ jobs:
           sudo chmod +x /usr/local/bin/chromedriver
 
       - name: Start Flask app for tests
-        working-directory: ./web  # Make sure you're in the directory where app.py lives
         run: |
-            export FLASK_APP=app.py
-            export FLASK_ENV=development
-            nohup flask run --host=127.0.0.1 --port=5000 > ../flask.log 2>&1 &
-            sleep 5
-
+          export FLASK_APP=app.py
+          nohup flask run --host=127.0.0.1 --port=5000 > flask.log 2>&1 &
+          sleep 5
 
       - name: Run Selenium Tests
         env:

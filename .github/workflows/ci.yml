@@ -33,6 +33,7 @@ jobs:
           nohup flask run --host=127.0.0.1 --port=5000 > flask.log 2>&1 &
           sleep 5
 
+
   # ---------- 2. Dependency Vulnerability Check (pip-audit) -----------
   pip-audit:
     runs-on: ubuntu-latest
