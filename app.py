@@ -27,7 +27,7 @@ def home():
             return redirect(url_for('result', term=term))
     return render_template('home.html')
 
-@app.route('/results')
+@app.route('/result')
 def result():
     term = request.args.get('term', '')
     print(f"[DEBUG] Term = {term}")
