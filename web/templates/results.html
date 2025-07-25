@@ -1,13 +1,12 @@
+<!-- web/templates/result.html -->
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Search Result</title>
+    <title>Search Result</title>
 </head>
 <body>
-  <h1>Search Term Submitted</h1>
-  <p>{{ term }}</p>
-  <form action="{{ url_for('home') }}">
-    <button type="submit">Go Back</button>
-  </form>
+    <h1>Search Result</h1>
+    <p>{{ term }}</p>
+    <a href="{{ url_for('home') }}">Back</a>
 </body>
 </html>

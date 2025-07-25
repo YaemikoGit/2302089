@@ -85,3 +85,44 @@ jobs:
         env:
           CHROME_BIN: /usr/bin/google-chrome
         run: pytest web/test_selenium.py --disable-warnings
+        
+  eslint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: |
+          npm ci || npm install
+
+      - name: Run ESLint HTML report
+        run: npx eslint . --ext .js -f html -o eslint-report.html
+        working-directory: ./web
+
+      - name: Upload ESLint HTML report as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: eslint-report
+          path: ./web/eslint-report.html
+
+      - name: Install SARIF formatter
+        run: npm install --save-dev @microsoft/eslint-formatter-sarif
+        working-directory: ./web
+
+      - name: Run ESLint SARIF scan
+        run: npx eslint . --ext .js -f @microsoft/eslint-formatter-sarif -o eslint-results.sarif
+        working-directory: ./web
+
+      - name: Upload ESLint SARIF report to GitHub
+        uses: github/codeql-action/upload-sarif@v3
+        with:
+          sarif_file: ./web/eslint-results.sarif
+
+   

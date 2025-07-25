@@ -27,10 +27,12 @@ def home():
             return redirect(url_for('result', term=term))
     return render_template('home.html')
 
-@app.route('/result')
+@app.route('/results')
 def result():
     term = request.args.get('term', '')
+    print(f"[DEBUG] Term = {term}")
     return render_template('result.html', term=term)
 
+
 if __name__ == "__main__":
-    app.run(host='127.0.0.1', port=5000)
+    app.run(debug=True, host='127.0.0.1', port=5000)
