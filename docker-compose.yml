@@ -27,8 +27,8 @@ services:
     volumes:
       - ./gitea:/data
     ports:
-      - "3001:3000"   # Web access
-      - "2223:22"     # SSH access
+      - "3000:3000"   # Web access
+      - "2222:22"     # SSH access
     restart: unless-stopped
 
   sonarqube:
