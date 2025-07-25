@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Search Page</title>
+</head>
+<body>
+  <h1>Enter Search Term</h1>
+  {% if error %}
+    <p style="color:red;">{{ error }}</p>
+  {% endif %}
+  <form method="POST">
+    <input type="text" name="search_term" value="{{ search_term or '' }}" required>
+    <button type="submit">Search</button>
+  </form>
+</body>
+</html>

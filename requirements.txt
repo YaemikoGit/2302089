@@ -1,0 +1,8 @@
+Flask
+pip-audit
+pytest
+selenium
+yamllint
+flask
+requests
+setuptools>=80.9.0
