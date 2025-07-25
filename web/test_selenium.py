@@ -94,5 +94,3 @@ def run_tests():
 
     driver.quit()
 
-if __name__ == "__main__":
-    run_tests()
