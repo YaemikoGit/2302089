@@ -77,7 +77,7 @@ jobs:
 
       - name: Start Flask app for tests
         run: |
-          export FLASK_APP=app.py
+          export FLASK_APP=web/app.py
           nohup flask run --host=127.0.0.1 --port=5000 > flask.log 2>&1 &
           sleep 5
 
